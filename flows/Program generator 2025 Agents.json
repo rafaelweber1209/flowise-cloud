@@ -1,0 +1,2007 @@
+{
+  "nodes": [
+    {
+      "id": "startAgentflow_0",
+      "type": "agentFlow",
+      "position": {
+        "x": 0.9277110293837438,
+        "y": 0
+      },
+      "width": 360,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 0.9277110293837438,
+        "y": 0
+      },
+      "data": {
+        "id": "startAgentflow_0",
+        "label": "Start - Training Program Questionnaire Input",
+        "version": 1.1,
+        "name": "startAgentflow",
+        "type": "Start",
+        "color": "#7EE787",
+        "hideInput": true,
+        "baseClasses": [
+          "Start"
+        ],
+        "category": "Agent Flows",
+        "description": "Starting point of the agentflow",
+        "inputParams": [
+          {
+            "label": "Input Type",
+            "name": "startInputType",
+            "type": "options",
+            "options": [
+              {
+                "label": "Chat Input",
+                "name": "chatInput",
+                "description": "Start the conversation with chat input"
+              },
+              {
+                "label": "Form Input",
+                "name": "formInput",
+                "description": "Start the workflow with form inputs"
+              }
+            ],
+            "default": "chatInput",
+            "id": "startAgentflow_0-input-startInputType-options",
+            "display": true
+          },
+          {
+            "label": "Form Title",
+            "name": "formTitle",
+            "type": "string",
+            "placeholder": "Please Fill Out The Form",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formTitle-string",
+            "display": true
+          },
+          {
+            "label": "Form Description",
+            "name": "formDescription",
+            "type": "string",
+            "placeholder": "Complete all fields below to continue",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formDescription-string",
+            "display": true
+          },
+          {
+            "label": "Form Input Types",
+            "name": "formInputTypes",
+            "description": "Specify the type of form input",
+            "type": "array",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Options",
+                    "name": "options"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "string",
+                "placeholder": "Label for the input"
+              },
+              {
+                "label": "Variable Name",
+                "name": "name",
+                "type": "string",
+                "placeholder": "Variable name for the input (must be camel case)",
+                "description": "Variable name must be camel case. For example: firstName, lastName, etc."
+              },
+              {
+                "label": "Add Options",
+                "name": "addOptions",
+                "type": "array",
+                "show": {
+                  "formInputTypes[$index].type": "options"
+                },
+                "array": [
+                  {
+                    "label": "Option",
+                    "name": "option",
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "id": "startAgentflow_0-input-formInputTypes-array",
+            "display": true
+          },
+          {
+            "label": "Ephemeral Memory",
+            "name": "startEphemeralMemory",
+            "type": "boolean",
+            "description": "Start fresh for every execution without past chat history",
+            "optional": true,
+            "id": "startAgentflow_0-input-startEphemeralMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Flow State",
+            "name": "startState",
+            "description": "Runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "placeholder": "Foo"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "placeholder": "Bar",
+                "optional": true
+              }
+            ],
+            "id": "startAgentflow_0-input-startState-array",
+            "display": true
+          },
+          {
+            "label": "Persist State",
+            "name": "startPersistState",
+            "type": "boolean",
+            "description": "Persist the state in the same session",
+            "optional": true,
+            "id": "startAgentflow_0-input-startPersistState-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "startInputType": "formInput",
+          "formTitle": "Program Generator Questionairre",
+          "formDescription": "Generate a hypertrophy training program using LLM's",
+          "formInputTypes": [
+            {
+              "type": "string",
+              "label": "1. Training Experience: How long have you been consistently training?",
+              "name": "1_training_age",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "2. Age: How old are you?",
+              "name": "2_age",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "3. Experience Level: Describe your familiarity with different exercise types.",
+              "name": "3_experience",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "4. Goals: What are your muscle growth goals?",
+              "name": "4_goals",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "5. Limitations: Do you have any injuries or physical limitations?",
+              "name": "5_limitations",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "6. Preferences: Do you have any specific exercise preferences or restrictions?",
+              "name": "6_preferences",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "7. Time Constraints: How many days per week can you train and for how long?",
+              "name": "7_time_constraints",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "8. Training Days How: would you like to schedule your workouts?",
+              "name": "8_training_days",
+              "addOptions": ""
+            }
+          ],
+          "startEphemeralMemory": true,
+          "startState": [
+            {
+              "key": "program_advice",
+              "value": ""
+            },
+            {
+              "key": "user_input",
+              "value": ""
+            },
+            {
+              "key": "workout_program",
+              "value": ""
+            },
+            {
+              "key": "workout_program_formatted",
+              "value": ""
+            },
+            {
+              "key": "program_advice_formatted",
+              "value": ""
+            }
+          ],
+          "startPersistState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "startAgentflow_0-output-startAgentflow",
+            "label": "Start",
+            "name": "startAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_0",
+      "position": {
+        "x": 9.761772186817751,
+        "y": 114.23885517090824
+      },
+      "data": {
+        "id": "llmAgentflow_0",
+        "label": "Generate workout program (3)",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_0-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_0-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_0-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are an expert hypertrophy training coach tasked with proposing personalized inputs for questions 9, 10, and 11 of a user's hypertrophy training program. These proposals must be based on the user's answers to questions 1 through 8, which will be provided in the User Input section. Use only the information from the User Input and the In-Context Knowledge sections to make your recommendations. Do not rely on any pre-trained knowledge outside of the provided context.</p><p>Your goal is to:</p><p>Question 9: Propose Weekly Frequency and Weekly Exercises for each muscle group.</p><p>Question 10: Recommend a Training Approach (RSM, SFR, SFTR, or STR).</p><p>Question 11: Suggest a Muscle Priority ranking.</p><p>Ensure that: All suggestions align with...time constraints... (assume each exercise takes on average 15 minutes).</p><p>CRITICAL OUTPUT REQUIREMENT: After proposing the muscle settings, you MUST calculate the maximum number of exercises per session by dividing the user's maximum session time in minutes by 15 and rounding down. You must then output this constraint on a new line in the following format:</p><p>MAX_EXERCISES_PER_SESSION: [Calculated Number]<br><br>Validate the average time per workout to be within the time constraints before outputting the result, and correct until correct when needed.</p><p>If any critical information is missing or unclear, respond with: \"I need more information to proceed. Please clarify [specific detail].\"</p><p>After proposing inputs, ask the user if they accept the suggestions or wish to make adjustments.</p>"
+            },
+            {
+              "role": "user",
+              "content": "<p>Below are the user's answers to questions 1 through 8. Use these responses to propose inputs for questions 9, 10, and 11.</p><p>## Input Section</p><p>1. <strong>Training Age</strong>:</p><p>How long has the user consistently trained with weights?</p><p><em>(e.g., 5 years)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.1_training_age\" data-label=\"$form.1_training_age\">{{ $form.1_training_age }}</span> </p><p>2. <strong>Biological Age</strong>:</p><p>What is the user's biological age?</p><p><em>(e.g., 40 years)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.2_age\" data-label=\"$form.2_age\">{{ $form.2_age }}</span> </p><p>3. <strong>Specific Exercise &amp; Equipment Experience</strong>:</p><p>What compound exercises, machines, and equipment is the user familiar with?</p><p><em>(e.g., Experienced with free weights like dumbbells and barbells, but limited experience with machines)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.3_experience\" data-label=\"$form.3_experience\">{{ $form.3_experience }}</span> </p><p>4. <strong>Goals</strong>:</p><p>What are the user's specific hypertrophy goals?</p><p><em>(e.g., Full-body hypertrophy with emphasis on legs and back)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.4_goals\" data-label=\"$form.4_goals\">{{ $form.4_goals }}</span> </p><p>5. <strong>Limitations</strong>:</p><p>Are there any injuries or limitations to consider?</p><p><em>(e.g., No heavy squats due to knee issues)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.5_limitations\" data-label=\"$form.5_limitations\">{{ $form.5_limitations }}</span> </p><p>6. <strong>Preferences</strong>:</p><p>Does the user have exercise preferences?</p><p><em>(e.g., Prefers free weights over machines)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.6_preferences\" data-label=\"$form.6_preferences\">{{ $form.6_preferences }}</span> </p><p>7. <strong>Time Constraints</strong>:</p><p>How many days per week can the user train, and for how long per session?</p><p><em>(e.g., 5 days per week, 1.5 hours per session)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.7_time_constraints\" data-label=\"$form.7_time_constraints\">{{ $form.7_time_constraints }}</span> </p><p>8. <strong>Training Days</strong>:</p><p>Specify available training days <code>True</code> for available, <code>False</code> for unavailable): <span class=\"variable\" data-type=\"mention\" data-id=\"$form.8_training_days\" data-label=\"$form.8_training_days\">{{ $form.8_training_days }}</span> </p><p>[Reasoning Steps]</p><p>Follow these steps to propose inputs for questions 9, 10, and 11. Use the User Input and In-Context Knowledge to reason through each step.</p><p>Step 1: Propose Weekly Frequency and Exercises (Question 9)</p><p>Frequency:</p><p>Analyze the user's training age, goals, and time constraints:</p><p>Training age determines recovery capacity (e.g., advanced users can handle higher frequencies).</p><p>Goals highlight priority muscles for higher frequency (e.g., 2–3x for chest, biceps, side delts if prioritized).</p><p>Time constraints (days and session length) limit total weekly frequency across all muscles.</p><p>Use hypertrophy principles:</p><p>Train priority muscles 2–3x weekly if recovery allows.</p><p>Train non-priority muscles 1–2x weekly.</p><p>Adjust downward for older users or those with limitations.</p><p>Consider available training days to distribute frequency evenly.</p><p>The frequency cannot be higher than the number of weekly exercises per week since each weekly exercise represents on slot in a week, so frequency is always &lt;= than weekly exercises.</p><p>Exercises:</p><p>Based on goals, experience, and preferences:</p><p>Use 3–4 exercises for priority muscles to ensure variety.</p><p>Use 2–3 exercises for non-priority muscles.</p><p>Incorporate user-specified exercises (e.g., Medium grip bench press for chest, Dumbbell lateral raise for side delts).</p><p>Avoid unilateral exercises if specified in preferences.</p><p>Ensure exercises align with equipment experience (e.g., free weights vs. machines).</p><p>Output Format: For each muscle group, propose:</p><p>Frequency: [X] times per week</p><p>Exercises: [Y] different exercises per week</p><p>Step 2: Propose Training Approach (Question 10)</p><p>Analyze the user's goals, time constraints, and preferences:</p><p>Goals: If maximizing stimulus is key (e.g., competitive bodybuilding), consider STFR.</p><p>Time constraints: Limited session time (e.g., &lt;1.5 hours) favors SFTR or STR.</p><p>Preferences: If efficiency is valued (e.g., balancing work and training), consider SFR or SFTR.</p><p>Consider training age and limitations:</p><p>Advanced users may handle RSM if time allows.</p><p>Beginners or those with limitations benefit from SFR or SFTR for recovery.</p><p>Use the Training Approaches definitions to select the most suitable approach:</p><p>RSM: Max stimulus, no time constraints.</p><p>SFR: Balance stimulus and fatigue, moderate time constraints.</p><p>SFTR: Optimize stimulus, fatigue, and time, limited session time.</p><p>STR: Max stimulus per unit time, very limited time.</p><p>Output: Proposed Training Approach: [RSM/SFR/SFTR/STR]</p><p>Step 3: Propose Muscle Priority (Question 11)</p><p>Rank muscle groups based on goals and preferences:</p><p>Highest priority: Muscles explicitly mentioned in goals (e.g., chest, biceps, side delts).</p><p>Medium priority: Muscles important for full-body hypertrophy but not emphasized.</p><p>Lowest priority: Muscles not mentioned or less aesthetically important.</p><p>Use Muscle Priority Guidelines:</p><p>Deprioritize muscles affected by limitations.</p><p>Ensure higher priority muscles are trained earlier in the week or session.</p><p>Output: Proposed Muscle Priority: [List muscle groups in order, e.g., Side Delts, Biceps, Triceps, Chest, Lats, Quads, Upper Back, Hamstrings, Glutes, Rear Delts, Calves, Abs, Front Delts]</p><p>Step 4: Present Proposals</p><p>Summarize your proposals for questions 9, 10, and 11:</p><p>Weekly Frequency and Exercises: Summarize for each muscle group.</p><p>Training Approach: State the proposed approach and rationale.</p><p>Muscle Priority: List the ranking.</p><p>Ask the user if they accept the suggestions or wish to make adjustments.</p><p>[Output Format]</p><p>Once the proposals are accepted, format the final inputs for questions 9, 10, and 11 as follows:</p><p>Proposed Inputs for Questions 9, 10, and 11</p><p>9. Muscle Settings:</p><p>Front Delts: Frequency [X], Exercises [Y]</p><p>Side Delts: Frequency [X], Exercises [Y]</p><p>Rear Delts: Frequency [X], Exercises [Y]</p><p>Chest: Frequency [X], Exercises [Y]</p><p>Upper Back: Frequency [X], Exercises [Y]</p><p>Lats: Frequency [X], Exercises [Y]</p><p>Biceps: Frequency [X], Exercises [Y]</p><p>Triceps: Frequency [X], Exercises [Y]</p><p>Quads: Frequency [X], Exercises [Y]</p><p>Hamstrings: Frequency [X], Exercises [Y]</p><p>Glutes: Frequency [X], Exercises [Y]</p><p>Calves: Frequency [X], Exercises [Y]</p><p>Abs: Frequency [X], Exercises [Y]</p><p>10. Training Approach Preference: [Proposed approach, e.g., SFTR]</p><p>11. Muscle Priority: [Proposed ranking, e.g., Side Delts, Biceps, Triceps, Chest, Lats, Quads, Upper Back, Hamstrings, Glutes, Rear Delts, Calves, Abs, Front Delts]</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": "",
+          "llmUpdateState": [
+            {
+              "key": "program_advice",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "o4-mini",
+            "temperature": "1",
+            "streaming": false,
+            "maxTokens": "8000",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "reasoningEffort": "high",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_0-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 269,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 9.761772186817751,
+        "y": 114.23885517090824
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_1",
+      "position": {
+        "x": 364.14572312818837,
+        "y": 109.22375882445928
+      },
+      "data": {
+        "id": "llmAgentflow_1",
+        "label": "Format program advice",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_1-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_1-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_1-input-llmMemoryType-options",
+            "display": false
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_1-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_1-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_1-input-llmUserMessage-string",
+            "display": false
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_1-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>Convert the program design advice into a JSON object. The structure MUST be as follows. It is critical that you also find and include the MAX_EXERCISES_PER_SESSION value.</p><p>{<br>\"muscle_settings\": { ... },<br>\"training_approach\": \"string\",<br>\"muscle_priority\": [ ... ],<br>\"constraints\": {<br>\"max_exercises_per_session\": int<br>}<br>}</p><p>Rules:</p><p>1. Extract exact numbers for frequency and exercises</p><p>2. Keep the training approach exactly as specified (RSM/SFR/SFTR/STR)</p><p>3. Maintain the exact order of muscle priority</p><p>4. Include all muscles mentioned in the input</p><p>5. Use consistent muscle names</p>"
+            },
+            {
+              "role": "user",
+              "content": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.program_advice\" data-label=\"$flow.state.program_advice\">{{ $flow.state.program_advice }}</span> </p>"
+            }
+          ],
+          "llmEnableMemory": false,
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [],
+          "llmUpdateState": [
+            {
+              "key": "program_advice_formatted",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4.1-nano",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "reasoningEffort": "medium",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_1-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 223,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 364.14572312818837,
+        "y": 109.22375882445928
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_2",
+      "position": {
+        "x": 9.881525180098663,
+        "y": 239.48407769733922
+      },
+      "data": {
+        "id": "llmAgentflow_2",
+        "label": "Generate workout program",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_2-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_2-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_2-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_2-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_2-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_2-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_2-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "user",
+              "content": "<p># Hypertrophy Training Program Design Assignment</p><p>Design a science-based hypertrophy training program based on the user's input. The program should follow hypertrophy training principles found below. Use the complete, effective rep range (5-30) for muscle growth based on scientific research. Do not specify the number of sets or intensity (RIR), as these will be adjusted later using autoregulation. Focus solely on exercise selection, rep ranges, and overall program structure.</p><p>Make sure the rest time for each muscle is as symmetrical as possible, taking into account when a muscle is trained as primary muscle by a exercise but also when its used as secondary muscle, to maximize the equal rest time for a muscle across the week. Imagine creating this symmetry like a puzzle where every exercise is a piece you can move the location from in a workout and in between training days (depending on the constraints of course).</p><p>## Input Section</p><p>1. <strong>Training Age</strong>:</p><p>How long has the user consistently trained with weights?</p><p><em>(e.g., 5 years)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.1_training_age\" data-label=\"$form.1_training_age\">{{ $form.1_training_age }}</span></p><p>2. <strong>Biological Age</strong>:</p><p>What is the user's biological age?</p><p><em>(e.g., 40 years)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.2_age\" data-label=\"$form.2_age\">{{ $form.2_age }}</span></p><p>3. <strong>Specific Exercise &amp; Equipment Experience</strong>:</p><p>What compound exercises, machines, and equipment is the user familiar with?</p><p><em>(e.g., Experienced with free weights like dumbbells and barbells, but limited experience with machines)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.3_experience\" data-label=\"$form.3_experience\">{{ $form.3_experience }}</span></p><p>4. <strong>Goals</strong>:</p><p>What are the user's specific hypertrophy goals?</p><p><em>(e.g., Full-body hypertrophy with emphasis on legs and back)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.4_goals\" data-label=\"$form.4_goals\">{{ $form.4_goals }}</span></p><p>5. <strong>Limitations</strong>:</p><p>Are there any injuries or limitations to consider?</p><p><em>(e.g., No heavy squats due to knee issues)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.5_limitations\" data-label=\"$form.5_limitations\">{{ $form.5_limitations }}</span></p><p>6. <strong>Preferences</strong>:</p><p>Does the user have exercise preferences?</p><p><em>(e.g., Prefers free weights over machines)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.6_preferences\" data-label=\"$form.6_preferences\">{{ $form.6_preferences }}</span></p><p>7. <strong>Time Constraints</strong>:</p><p>How many days per week can the user train, and for how long per session?</p><p><em>(e.g., 5 days per week, 1.5 hours per session)</em></p><p><strong>Input</strong>: <span class=\"variable\" data-type=\"mention\" data-id=\"$form.7_time_constraints\" data-label=\"$form.7_time_constraints\">{{ $form.7_time_constraints }}</span></p><p>8. <strong>Training Days</strong>:</p><p>Specify available training days <code>True</code> for available, <code>False</code> for unavailable): <span class=\"variable\" data-type=\"mention\" data-id=\"$form.8_training_days\" data-label=\"$form.8_training_days\">{{ $form.8_training_days }}</span></p><p>9, 10 and 11:<br><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.program_advice_formatted\" data-label=\"$flow.state.program_advice_formatted\">{{ $flow.state.program_advice_formatted }}</span></p><p>## How to Use This Prompt</p><p>This prompt is designed to guide you in creating a personalized, science-based hypertrophy training program using advanced AI reasoning capabilities.</p><p>1. <strong>Input Processing</strong>: Analyze the user's input fields to tailor the program to their specific needs and constraints.</p><p>2. <strong>Program Design</strong>: Create a workout plan that balances all input factors with established scientific principles of hypertrophy training.</p><p>a. <strong>Design the Training Split</strong>:</p><p>- Map out training days for each muscle group, starting with the highest priority muscle and working down the list based on the \"Muscle Priority\" input.</p><p>- Allocate exercise slots based on the specified \"Weekly Frequency\" and \"Weekly Exercises\" from the \"Muscle Settings\" input.</p><p>- Ensure the split fits within the user's available \"Training Days\" and \"Time Constraints.\"</p><p>- <strong>Symmetry Focus</strong>: Prioritize a symmetrical training split to balance recovery and muscle engagement:</p><p>- Calculate the ideal rest period for each muscle group using:</p><p>\\[</p><p>\\text{Ideal Primary Rest} = \\left(\\frac{7}{\\text{weekly_frequency}}\\right) - 1</p><p>\\]</p><p>- Schedule exercises to group primary and secondary muscle involvement on the same or adjacent days where possible, minimizing secondary engagement on rest days. Treat exercise scheduling like a puzzle, adjusting placements to maximize effective rest symmetry across the week.</p><p>- <strong>Exercise Distribution</strong>:</p><p>- Aim to distribute exercises so that each training day has a similar number of exercises (e.g., 4-6 exercises per session for 4 days).</p><p>- Prioritize higher-priority muscles (e.g., chest, biceps, side delts) by:</p><p>- Placing their exercises earlier in the week (e.g., Monday and Tuesday).</p><p>- Scheduling them at the start of each session for peak energy.</p><p>- If a day becomes overloaded (e.g., &gt;6 exercises), move lower-priority exercises (e.g., calves, abs) to less busy days or reduce their frequency if possible.</p><p>b. <strong>Assign Rep Ranges</strong>:</p><p>- Assign rep ranges within the 5-30 range, considering the muscle group, exercise slot order, user's training age, and biological age. Ensure a variety of rep ranges across the program for each muscle group.</p><p>3. <strong>Program Refinement and Output</strong>: Fine-tune the program to ensure it meets all specified requirements and is presented in the required format.</p><p>- Verify adherence to Program Design Checklist items.</p><p>- Confirm program fits within specified time constraints and accommodates any stated limitations.</p><p>- Format the program according to the Output &amp; Layout Requirements</p><p>4. <strong>Self-Evaluation and Iterative Adjustment</strong>: Before outputting the final program, conduct a thorough self-evaluation and make necessary adjustments. This is an iterative process that should continue until all requirements are met:</p><p>a. Review all requirements and checklist items from the prompt.</p><p>b. Compare the created program against each requirement and checklist item.</p><p>c. For each item, explicitly state whether the program meets the requirement or not.</p><p>d. If any requirements are not met, make necessary adjustments to the program.</p><p>e. After making adjustments, return to step (a) and repeat the entire evaluation process.</p><p>f. Continue this cycle until all requirements and checklist items are fully satisfied.</p><p>Example format for self-evaluation:</p><p>```</p><p>Iteration [Number]:</p><p>Requirement 1: [State requirement]</p><p>- Met: Yes/No</p><p>- Explanation: [Brief explanation of how the requirement is met or why it's not]</p><p>- Adjustment (if needed): [Describe any changes made to meet the requirement]</p><p>[Repeat for all requirements and checklist items]</p><p>Overall Assessment:</p><p>- All requirements met: Yes/No</p><p>- Next steps: [If all requirements are met, proceed to final output. If not, describe the focus for the next iteration.]</p><p>```</p><p>## Output &amp; Layout Requirements</p><p>Once the full training program has been generated, apply the following layout rules to format the output:</p><p>1. <strong>Training Summary</strong>:</p><p>Provide a concise summary of the program including:</p><p>- Total training days and schedule</p><p>- Estimated workout duration</p><p>- Total exercise slots</p><p>- Rep range distribution</p><p>- Muscle group prioritization</p><p>Format:</p><p>```markdown</p><p>Training Summary:</p><p>Days: [X] ([Day]-[Day]) | Duration: ~[X]-[Y] hrs/session | Total Exercise Slots: [Z]</p><p>Rep Ranges: [Type]: [Range] | [Type]: [Range]</p><p>Muscle Class Frequency &amp; Slots/Week:</p><p>Chest: [X]x, [Y]s | Back: [X]x, [Y]s | Legs: [X]x, [Y]s</p><p>Shoulders: [X]x, [Y]s | Arms: [X]x, [Y]s</p><p>```</p><p>Note: 'x' denotes times per week, 's' denotes exercise slots per week.</p><p>2. <strong>Compact Overview</strong>:</p><p>Present the final program in a table format with the following guidelines:</p><p>- Use days as columns and muscle classes as rows.</p><p>- Each cell represents a muscle class and contains exercise slots for that muscle on that day.</p><p>- Group exercise slots for the same muscle class together in a single cell for clarity.</p><p>- Include the exercise name and rep range for each slot.</p><p>- Only output the primary muscle for a exercise that is mentioned in the exercise list.</p><p>Compact Overview with Rep Ranges:</p><p>| Exercise # | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |</p><p>|------------|--------|---------|-----------|----------|--------|----------|--------|</p><p>| 1 | Side Delts:&lt;br&gt;- Lateral Raise (10-15) | Side Delts:&lt;br&gt;- Cable Lateral Raise (15-20) | Rest | Side Delts:&lt;br&gt;- Dumbbell Upright Row (10-15) | Side Delts:&lt;br&gt;- Machine Lateral Raise (15-25) | Rest | Rest |</p><p>| 2 | Side Delts:&lt;br&gt;- Leaning Lateral Raise (10-15) | Biceps:&lt;br&gt;- Barbell Curl (8-12) | Rest | Triceps:&lt;br&gt;- Rope Pushdown (12-15) | Chest:&lt;br&gt;- Bench Press (6-10) | Rest | Rest |</p><p>| 3 | Biceps:&lt;br&gt;- Incline Dumbbell Curl (10-15) | Triceps:&lt;br&gt;- Overhead Extension (10-15) | Rest | Chest:&lt;br&gt;- Incline Dumbbell Press (8-12) | Lats:&lt;br&gt;- Pull-ups (6-12) | Rest | Rest |</p><p>| 4 | [Next exercise] | [Next exercise] | Rest | [Next exercise] | [Next exercise] | Rest | Rest |</p><p>| ... | ... | ... | ... | ... | ... | ... | ... |</p><p>## Explanation of Input Fields and Their Implications</p><p>1. <strong>Training Age</strong>:</p><p>Determines exercise complexity and rep range variety.</p><p><em>Implication</em>: Higher training age allows for more advanced techniques and varied rep ranges, while lower training age suggests simpler movements to build a foundation.</p><p>2. <strong>Biological Age</strong>:</p><p>Influences rep ranges and exercise selection.</p><p><em>Implication</em>: Over 40 may require higher reps (10+) and joint-friendly exercises. Younger users can often handle lower rep ranges and more intense exercises.</p><p>3. <strong>Exercise Experience</strong>:</p><p>Guides exercise selection based on familiarity with exercises and equipment.</p><p><em>Implication</em>: More familiar exercises can be prioritized, while newer ones are introduced gradually to avoid injury. Familiarity with equipment like dumbbells, barbells, or machines will influence the types of exercises included.</p><p>4. <strong>Goals</strong>:</p><p>Shapes overall program structure and muscle group prioritization.</p><p><em>Implication</em>: If hypertrophy is the primary goal, certain muscle groups can receive more attention based on user preferences.</p><p>5. <strong>Limitations</strong>:</p><p>Informs exercise modifications or exclusions.</p><p><em>Implication</em>: Exercises that exacerbate injuries must be avoided, and alternative exercises should be included to meet the user's needs safely.</p><p>6. <strong>Preferences</strong>:</p><p>Helps guide exercise selection to improve adherence.</p><p><em>Implication</em>: Users are more likely to follow the program if it includes exercises they enjoy.</p><p>7. <strong>Time Constraints</strong>:</p><p>Determines workout frequency and session duration.</p><p><em>Implication</em>: Shorter available time may require efficient exercise selection and program structuring to fit within time limits.</p><p>8. <strong>Training Days</strong>:</p><p>Informs program split and recovery periods between training sessions.</p><p><em>Implication</em>: Knowing which days the user can train helps balance workload and recovery, avoiding training the same muscle groups on consecutive days.</p><p>9. <strong>Muscle Settings</strong>:</p><p>Determines how often and with how much variety each muscle group is trained.</p><p>- <strong>Frequency</strong>: Training frequency determines how often a muscle group is trained within a week.</p><p>- <strong>Exercises</strong>: Number of exercises per muscle group determines the number of different exercises used to target that muscle group within the week.</p><p>10. <strong>Muscle Priority</strong>:</p><p>Determines training order for muscle groups.</p><p><em>Implication</em>: Prioritized muscles trained earlier in workouts for peak energy and focus. Affects exercise selection, order, and overall split structure. Example: High-priority side delts placed at start of upper body/push workouts.</p><p>## Program Design Checklist</p><p>- [ ] Rep ranges are appropriate based on training age and biological age.</p><p>- [ ] Exercise selection matches the user's experience and preferences.</p><p>- [ ] Use the muscle group priorities to inform exercise order, starting with the most important muscle groups and ending with the least important muscle groups.</p><p>- [ ] Program aligns with the user's hypertrophy goals (specific muscle group focus).</p><p>- [ ] Limitations and injuries are accounted for in exercise selection.</p><p>- [ ] Workout duration fits within time constraints (approximately 15 minutes per exercise).</p><p>- [ ] Muscle groups are trained with the specified frequency and exercise variety.</p><p>- [ ] Rep ranges: 5-10 for compound &amp; barbell exercises, 10-20 or 20-30 for machines/dumbbell exercises.</p><p>- [ ] Heavier exercises scheduled earlier in the week and within each workout, lighter ones later.</p><p>- [ ] Make sure the number of exercises per workout is roughly equal for all workouts to prevent duration and exertion imbalances.</p><p>- [ ] 1/3 of exercises are novel to the user, where appropriate.<br><br>- [ ] <strong>ENFORCE CONSTRAINTS:</strong> The input JSON contains a 'constraints' object. You MUST strictly adhere to themax_exercises_per_sessionvalue within it. No training day in your final generated schedule is allowed to exceed this number of exercises.</p><p>- [ ] Full effective rep range (5-30) utilized across the program.</p><p>- [ ] Science-based principles (e.g., from Dr. Mike Israetel) incorporated.</p><p>- [ ] Rep ranges are based on current scientific understanding:</p><p>* The entire 5-30 rep range is equally effective for muscle growth (hypertrophy)</p><p>* Rep range choices should be based on factors such as exercise type, injury prevention, and personal preference, not on outdated beliefs about specific ranges for growth vs. endurance</p><p>* Vary rep ranges to provide diverse stimuli and prevent adaptation, not because certain ranges are \"better\" for hypertrophy</p><p>- [ ] Check if only exercises from the Exercise List are used, with rep ranges falling within the recommended range for that exercise but adhering strictly to the categorized rep ranges (5-10, 10-20, 20-30).</p><p>- [ ] <strong>Symmetrical training split to balance recovery and muscle engagement:</strong></p><p>- <strong>Primary Rest Calculation:</strong></p><p>- For each muscle group, calculate the ideal number of full rest days between primary training sessions using:</p><p>```</p><p>Ideal Primary Rest = (7/weekly_frequency) - 1</p><p>```</p><p>- This value represents the recovery time if the muscle were engaged only as a primary mover.</p><p>- <strong>Example Calculations:</strong></p><p>- Frequency 2x/week: (7/2) - 1 = 2.5 days rest needed</p><p>- Frequency 3x/week: (7/3) - 1 = 1.33 days rest needed</p><p>- Frequency 4x/week: (7/4) - 1 = 0.75 days rest needed</p><p></p><p>- <strong>Secondary Involvement Check:</strong></p><p>- For each muscle, identify all exercises where it acts as a secondary mover</p><p>- Check if any secondary involvement falls on calculated rest days</p><p>- Example: If chest is trained Monday/Thursday (2x/week):</p><p>- Primary rest days should be Tuesday, Wednesday, Friday, Saturday, Sunday</p><p>- Check triceps exercises on these days as they often involve chest secondarily</p><p>- If found, move those exercises to chest training days (Monday/Thursday)</p><p></p><p>- <strong>Scheduling Strategy:</strong></p><p>- Start with highest frequency muscles (e.g., 4x/week):</p><p>1. Space sessions as evenly as possible across available training days</p><p>2. Note secondary muscles involved in each exercise</p><p>- For medium frequency muscles (2-3x/week):</p><p>1. Calculate ideal rest days</p><p>2. Place workouts to maximize rest periods</p><p>3. Align with existing exercises where they're secondary movers</p><p>- For lower frequency muscles (1x/week):</p><p>1. Place on days that don't disrupt other muscles' rest periods</p><p>2. Consider secondary involvement in other days' exercises</p><p></p><p>- <strong>Validation Process:</strong></p><p>- For each muscle group:</p><p>1. List primary training days</p><p>2. Calculate actual rest periods between sessions</p><p>3. List days where it's used as a secondary mover</p><p>4. Compare actual vs. ideal rest periods</p><p>5. Adjust if rest disruption is found:</p><p>- Option 1: Move secondary exercises to primary days</p><p>- Option 2: Swap with alternative exercises from the Exercise List</p><p>- Option 3: Reorganize training split to better cluster synergistic muscles</p><p></p><p>- <strong>Example Application:</strong></p><p>```</p><p>Muscle: Chest (2x/week)</p><p>Ideal Rest = (7/2) - 1 = 2.5 days</p><p>Primary Days: Monday, Thursday</p><p>Expected Rest: 2 days (Tue-Wed), 3 days (Fri-Sun)</p><p>Secondary Check:</p><p>- Found: Triceps pushdowns on Tuesday (chest secondary)</p><p>- Action: Move to Monday to cluster with chest work</p><p>- Result: Clean rest periods maintained</p><p>```</p><p></p><p>- <strong>Underlying Goal:</strong></p><p>- The overall scheduling should naturally lead to common splits (e.g., upper–lower or push–pull–legs) when every muscle is trained twice per week.</p><p>- In such cases, aligning secondary activities with primary training days preserves the full recovery potential as computed by the original function.</p><p>- <strong>Time Management:</strong></p><p>- Assume each exercise takes approximately 15 minutes (including rest).</p><p>- For each training day, calculate the estimated session time as:</p><p>```</p><p>Estimated Session Time = Number of Exercises × 15 minutes</p><p>```</p><p>- Ensure that the estimated session time falls within the user's specified range (e.g., 45-90 minutes). If it exceeds the maximum:</p><p>- Redistribute exercises to less busy days.</p><p>- Reduce the number of exercises for lower-priority muscles (e.g., move calves or abs to another day).</p><p>## Exercise List</p><p>Note: When selecting exercises, choose a specific range within the categories (5–10, 10–20, 20–30) that aligns with the program's goals and the exercise's position in the workout. Each entry now includes the primary and secondary muscle groups engaged by the exercise.</p><p>1. 2-arm dumbbell curl | 15–20 | Biceps | Forearms</p><p>2. 2-arm dumbbell row | 5–10 | Upper Back | Biceps</p><p>3. 45 degree back raise | 10–30 | Lower Back | Glutes</p><p>4. ab roller | 10–30 | Abs | Shoulders</p><p>5. Assisted Normal Grip Pullup | 5–20 | Lats | Biceps</p><p>6. assisted dip | 5–20 | Chest | Triceps</p><p>7. assisted parallel pullup | 5–20 | Lats | Biceps</p><p>8. assisted underhand pullup | 5–20 | Lats | Biceps</p><p>9. assisted wide grip pullup | 5–20 | Lats | Upper Back</p><p>10. alternating dumbbell curl | 15–20 | Biceps | Forearms</p><p>11. barbell bent over row | 5–10 | Upper Back | Lats</p><p>12. barbell bent over shrug | 15–30 | Traps | Upper Back</p><p>13. barbell curl narrow grip | 15–20 | Biceps | Forearms</p><p>14. barbell curl normal grip | 15–20 | Biceps | Forearms</p><p>15. barbell facepull | 10–20 | Rear Delts | Upper Back</p><p>16. barbell front raise | 10–30 | Front Delts | Shoulders</p><p>17. barbell hip thrust | 10–20 | Glutes | Hamstrings</p><p>18. barbell overhead triceps extension | 10–20 | Triceps | Shoulders</p><p>19. barbell row to chest | 5–10 | Upper Back | Lats</p><p>20. barbell shrug | 15–30 | Traps | Shoulders</p><p>21. barbell skullcrusher | 10–30 | Triceps | Shoulders</p><p>22. barbell split squat | 5–20 | Quads | Glutes</p><p>23. barbell standing wrist curl | 10–30 | Forearms | N/A</p><p>24. barbell upright row | 10–20 | Shoulders | Traps</p><p>25. barbell upright row (cable) | 15–30 | Shoulders | Traps</p><p>26. barbell walking lunge | 5–20 | Quads | Glutes</p><p>27. belt squat | 10–30 | Quads | Glutes</p><p>28. cable bent flye | 10–30 | Chest | Shoulders</p><p>29. cable bent over shrug | 15–30 | Traps | Upper Back</p><p>30. cable cross body bent lateral raise | 10–20 | Side Delts | Rear Delts</p><p>31. cable cross body lateral raise | 15–30 | Side Delts | Rear Delts</p><p>32. cable curl | 15–30 | Biceps | Forearms</p><p>33. cable ez bar curl | 15–30 | Biceps | Forearms</p><p>34. cable ez bar curl wide grip | 15–30 | Biceps | Forearms</p><p>35. cable flye | 10–30 | Chest | Shoulders</p><p>36. cable front raise | 10–30 | Front Delts | Upper Chest</p><p>37. cable leaning lateral raise | 15–30 | Side Delts | Rear Delts</p><p>38. cable overhead triceps extension | 10–30 | Triceps | Shoulders</p><p>39. cable pull through | 10–30 | Glutes | Hamstrings</p><p>40. cable rope crunch | 10–30 | Abs | N/A</p><p>41. cable rope facepull | 15–30 | Rear Delts | Upper Back</p><p>42. cable rope overhead triceps extension | 10–20 | Triceps | Shoulders</p><p>43. cable rope pushdown | 10–20 | Triceps | Shoulders</p><p>44. cable rope twist curl | 15–30 | Biceps | Forearms</p><p>45. cable shrug | 15–30 | Traps | Upper Back</p><p>46. cable side shrug | 15–30 | Traps | Upper Back</p><p>47. cable single arm rear delt raise | 15–30 | Rear Delts | Side Delts</p><p>48. cable single arm side shrug | 15–30 | Traps | Upper Back</p><p>49. cable single arm triceps pushdown | 10–20 | Triceps | Shoulders</p><p>50. cable triceps pushdown | 10–30 | Triceps | Shoulders</p><p>51. cable underhand flye | 10–30 | Chest | Shoulders</p><p>52. cable underhand front raise | 10–30 | Front Delts | Upper Chest</p><p>53. cable upright row | 15–30 | Shoulders | Traps</p><p>54. cable wrist curl | 10–30 | Forearms | N/A</p><p>55. calf machine | 10–20 | Calves | N/A</p><p>56. calf raise (hack squat machine) | 20–30 | Calves | N/A</p><p>57. cambered bar bench press | 5–10 | Chest | Triceps</p><p>58. cambered bar row | 5–10 | Upper Back | Lats</p><p>59. chest supported row | 5–20 | Upper Back | Lats</p><p>60. close grip barbell curl | 15–20 | Biceps | Forearms</p><p>61. close stance feet forward squats | 5–10 | Quads | Glutes</p><p>62. Convential Deadlift | 5–10 | Hamstrings | Glutes</p><p>63. cross crunches | 10–30 | Abs | Hip Flexors</p><p>64. deficit 25's deadlift | 5–10 | Hamstrings | Glutes</p><p>65. deficit deadlift | 5–10 | Hamstrings | Glutes</p><p>66. deficit push-up | 5–30 | Chest | Triceps</p><p>67. dip | 5–20 | Chest | Triceps</p><p>68. dumbbell bench wrist curl | 10–30 | Forearms | N/A</p><p>69. dumbbell bent lateral raise | 10–20 | Side Delts | Rear Delts</p><p>70. dumbbell bent over shrug | 15–30 | Traps | Upper Back</p><p>71. dumbbell facepull | 10–20 | Rear Delts | Upper Back</p><p>72. dumbbell front raise | 10–30 | Front Delts | Shoulders</p><p>73. dumbbell lateral raise | 15–30 | Side Delts | Rear Delts</p><p>74. dumbbell leaning shrug | 15–30 | Traps | Upper Back</p><p>75. dumbbell overhead tricep extension | 10–20 | Triceps | Shoulders</p><p>76. dumbbell pullover | 10–30 | Chest | Lats</p><p>77. dumbbell reverse lunge | 10–20 | Quads | Glutes</p><p>78. dumbbell shrug | 15–30 | Traps | Shoulders</p><p>79. dumbbell single arm preacher curl | 15–20 | Biceps | Forearms</p><p>80. dumbbell spider curl | 15–20 | Biceps | Forearms</p><p>81. dumbbell split squat | 10–20 | Quads | Glutes</p><p>82. dumbbell split squat (rear foot on bench) | 10–20 | Quads | Glutes</p><p>83. dumbbell standing wrist curl | 10–30 | Forearms | N/A</p><p>84. dumbbell stiff legged deadlift | 5–10 | Hamstrings | Glutes</p><p>85. dumbbell twist curl | 15–20 | Biceps | Forearms</p><p>86. dumbbell upright row | 10–20 | Shoulders | Traps</p><p>87. dumbbell walking lunge | 10–20 | Quads | Glutes</p><p>88. ez bar curl narrow grip | 15–20 | Biceps | Forearms</p><p>89. ez bar curl wide grip | 15–20 | Biceps | Forearms</p><p>90. ez bar overhead tricep extension | 10–20 | Triceps | Shoulders</p><p>91. ez bar preacher curl | 15–20 | Biceps | Forearms</p><p>92. ez bar spider curl | 15–20 | Biceps | Forearms</p><p>93. ez bar underhand front raise | 10–30 | Front Delts | Upper Chest</p><p>94. ez curl | 15–20 | Biceps | Forearms</p><p>95. feet forward smith squat | 5–20 | Quads | Glutes</p><p>96. flat dumbbell bench press | 5–20 | Chest | Triceps</p><p>97. flat dumbbell flye | 10–20 | Chest | Shoulders</p><p>98. flat dumbbell press flye | 10–20 | Chest | Triceps</p><p>99. flat hammer machine press | 10–30 | Chest | Triceps</p><p>100. front squat | 5–10 | Quads | Glutes</p><p>101. front squat (cross grip) | 5–10 | Quads | Glutes</p><p>102. glute ham raise | 10–20 | Hamstrings | Glutes</p><p>103. hack squat | 10–20 | Quads | Glutes</p><p>104. hammer curl | 15–20 | Biceps | Forearms</p><p>105. hammer high row | 10–30 | Upper Back | Lats</p><p>106. hammer low row | 10–30 | Upper Back | Lats</p><p>107. hammer machine chest press | 10–30 | Chest | Triceps</p><p>108. hanging knee raise | 10–30 | Abs | Hip Flexors</p><p>109. hanging knee side raise | 10–30 | Abs | Obliques</p><p>110. hanging straight leg raise | 10–30 | Abs | Hip Flexors</p><p>111. high bar good morning | 5–10 | Lower Back | Glutes</p><p>112. high bar squat | 5–10 | Quads | Glutes</p><p>113. high cable flye | 10–30 | Chest | Shoulders</p><p>114. high Incline Dumbbell Press | 5–30 | Chest | Shoulders</p><p>115. hip abduction machine | 20–30 | Glutes | Hip Abductors</p><p>116. hip thrust machine | 10–30 | Glutes | Hamstrings</p><p>117. hyperextensions | 10–30 | Lower Back | Glutes</p><p>118. incline dumbbell curl | 15–20 | Biceps | Forearms</p><p>119. Incline Dumbbell Press | 5–20 | Chest | Shoulders</p><p>120. Incline Dumbbell Press flye | 10–20 | Chest | Shoulders</p><p>121. incline dumbbell facepull | 15–30 | Rear Delts | Upper Back</p><p>122. incline dumbbell flye | 10–20 | Chest | Shoulders</p><p>123. incline dumbbell lateral raise | 15–30 | Side Delts | Rear Delts</p><p>124. incline dumbbell row | 5–20 | Upper Back | Lats</p><p>125. incline machine chest press | 10–30 | Chest | Triceps</p><p>126. incline medium grip bench press | 5–20 | Chest | Triceps</p><p>127. incline narrow grip bench press | 5–20 | Chest | Triceps</p><p>128. incline wide grip bench press | 5–20 | Chest | Triceps</p><p>129. inverted row | 5–30 | Upper Back | Biceps</p><p>130. inverted skullcrusher | 10–30 | Triceps | Shoulders</p><p>131. jammer press | 5–20 | Chest | Shoulders</p><p>132. jm press | 5–20 | Chest | Triceps</p><p>133. kneeling cable facepull | 15–30 | Rear Delts | Upper Back</p><p>134. laying row | 5–30 | Upper Back | Lats</p><p>135. leg extension | 10–30 | Quads | N/A</p><p>136. leg press | 10–20 | Quads | Glutes</p><p>137. leg press calves | 10–20 | Calves | N/A</p><p>138. leg raise | 10–30 | Abs | Hip Flexors</p><p>139. low bar good morning | 5–10 | Lower Back | Glutes</p><p>140. low bar squats | 5–10 | Quads | Glutes</p><p>141. low Incline Dumbbell Press | 5–20 | Chest | Shoulders</p><p>142. Lying Leg Curl | 10–30 | Hamstrings | Glutes</p><p>143. machine chest press | 10–20 | Chest | Triceps</p><p>144. machine chest supported row | 10–30 | Upper Back | Lats</p><p>145. machine crunch | 10–30 | Abs | N/A</p><p>146. machine flye | 10–30 | Chest | Shoulders</p><p>147. machine glute kickback | 10–30 | Glutes | Hamstrings</p><p>148. machine lateral raise | 15–30 | Side Delts | Shoulders</p><p>149. machine preacher curl | 15–30 | Biceps | Forearms</p><p>150. machine pullover | 10–30 | Chest | Lats</p><p>151. machine reverse flye | 15–30 | Rear Delts | Upper Back</p><p>152. machine shoulder press | 10–30 | Shoulders | Traps</p><p>153. machine triceps extension | 10–30 | Triceps | Shoulders</p><p>154. machine triceps pushdown | 10–30 | Triceps | Shoulders</p><p>155. medium grip bench press | 5–20 | Chest | Triceps</p><p>156. modified bench dip | 5–30 | Triceps | Chest</p><p>157. modified candlestick | 10–30 | Abs | Hip Flexors</p><p>158. narrow grip bench press | 5–20 | Chest | Triceps</p><p>159. narrow grip pulldown | 10–20 | Lats | Biceps</p><p>160. narrow grip push-up | 5–30 | Chest | Triceps</p><p>161. narrow stance squat | 5–10 | Quads | Glutes</p><p>162. normal grip pulldown | 10–20 | Lats | Biceps</p><p>163. normal grip pullup | 5–10 | Lats | Biceps</p><p>164. parallel grip pullup | 5–10 | Lats | Biceps</p><p>165. pec dec flye | 10–30 | Chest | Shoulders</p><p>166. pushup | 5–30 | Chest | Triceps</p><p>167. reaching sit-up | 10–30 | Abs | Hip Flexors</p><p>168. seated barbell overhead triceps extension | 10–20 | Triceps | Shoulders</p><p>169. seated barbell shoulder press | 5–20 | Shoulders | Traps</p><p>170. seated cable row | 10–30 | Upper Back | Lats</p><p>171. seated dumbbell shrug | 15–30 | Traps | Shoulders</p><p>172. seated dumbbell shoulder press | 5–20 | Shoulders | Traps</p><p>173. seated ez bar overhead triceps extension | 10–20 | Triceps | Shoulders</p><p>174. seated fly | 10–30 | Chest | Shoulders</p><p>175. seated leg curl | 10–30 | Hamstrings | Glutes</p><p>176. single arm supported dumbbell row | 5–30 | Upper Back | Lats</p><p>177. single leg dumbbell hip thrust | 10–20 | Glutes | Hamstrings</p><p>178. single leg stair calves | 10–20 | Calves | N/A</p><p>179. single-leg leg curl | 10–30 | Hamstrings | Glutes</p><p>180. sit-ups | 10–30 | Abs | Hip Flexors</p><p>181. slant board sit-up | 10–30 | Abs | Hip Flexors</p><p>182. smith machine bench press | 5–20 | Chest | Triceps</p><p>183. smith machine calves | 10–20 | Calves | N/A</p><p>184. smith machine incline press | 5–20 | Chest | Triceps</p><p>185. smith machine narrow grip bench press | 5–20 | Chest | Triceps</p><p>186. smith machine row | 5–10 | Upper Back | Lats</p><p>187. smith machine seated shoulder press | 5–20 | Shoulders | Traps</p><p>188. smith machine split squat | 5–20 | Quads | Glutes</p><p>189. smith machine upright row | 15–30 | Shoulders | Traps</p><p>190. smith machine wide grip bench press | 5–20 | Chest | Triceps</p><p>191. smith machine wide grip incline press | 5–20 | Chest | Triceps</p><p>192. stair calves | 10–20 | Calves | N/A</p><p>193. standing barbell shoulder press | 5–20 | Shoulders | Traps</p><p>194. standing dumbbell shoulder press | 5–20 | Shoulders | Traps</p><p>195. stiff-legged deadlift | 5–10 | Hamstrings | Glutes</p><p>196. straight arm pulldown | 10–30 | Lats | Upper Back</p><p>197. sumo deadlift | 5–10 | Hamstrings | Glutes</p><p>198. sumo squat | 5–10 | Quads | Glutes</p><p>199. t-bar row | 5–10 | Upper Back | Lats</p><p>200. thumbs down lateral raise | 15–30 | Side Delts | Rear Delts</p><p>201. top hold lateral raise | 15–30 | Side Delts | Rear Delts</p><p>202. underhand ez bar row | 5–10 | Upper Back | Lats</p><p>203. underhand pulldown | 10–20 | Lats | Biceps</p><p>204. underhand pullup | 5–10 | Lats | Biceps</p><p>205. v-up | 10–30 | Abs | Hip Flexors</p><p>206. wide grip bench press | 5–20 | Chest | Triceps</p><p>207. wide grip pulldown | 10–20 | Lats | Biceps</p><p>208. wide grip pullup | 5–10 | Lats | Biceps</p><p>209. wide stance belt squat | 5–10 | Quads | Glutes</p><p></p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [],
+          "llmUpdateState": [
+            {
+              "key": "workout_program",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "o4-mini",
+            "temperature": "1",
+            "streaming": false,
+            "maxTokens": "7972",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "reasoningEffort": "high",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_2-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 247,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 9.881525180098663,
+        "y": 239.48407769733922
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_3",
+      "position": {
+        "x": 340.2596830945673,
+        "y": 233.00109442394734
+      },
+      "data": {
+        "id": "llmAgentflow_3",
+        "label": "Format workout program",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_3-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_3-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_3-input-llmMemoryType-options",
+            "display": false
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_3-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_3-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_3-input-llmUserMessage-string",
+            "display": false
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_3-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>Convert the training program into a JSON object with the following structure:</p><p>{</p><p>  \"Monday\": [</p><p>    {</p><p>      \"order\": 1,</p><p>      \"exercise\": \"Exercise Name\",</p><p>      \"rep_range\": \"X-Y\",</p><p>      \"primary_muscle\": \"Muscle Group\"</p><p>    }</p><p>  ],</p><p>  // ... repeat for all weekdays</p><p>}</p><p>Rules:</p><p>1. Include all 7 days of the week</p><p>2. For rest days, use an empty array</p><p>3. Exercise order starts at 1 for each day</p><p>4. Extract rep ranges exactly as shown in the program</p><p>5. Use the primary muscle mentioned for each exercise</p><p>6. Only include actual exercises (no \"optional\" or placeholder exercises)</p><p>7. Maintain the exact exercise names from the program </p>"
+            },
+            {
+              "role": "user",
+              "content": "<p>Generated program:<br><br><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.workout_program\" data-label=\"$flow.state.workout_program\">{{ $flow.state.workout_program }}</span></p>"
+            }
+          ],
+          "llmEnableMemory": false,
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [],
+          "llmUpdateState": [
+            {
+              "key": "workout_program_formatted",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4.1-nano",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "reasoningEffort": "medium",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_3-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 233,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 340.2596830945673,
+        "y": 233.00109442394734
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_4",
+      "position": {
+        "x": 325.6377750238883,
+        "y": 353.99691686389633
+      },
+      "data": {
+        "id": "llmAgentflow_4",
+        "label": "Format workout program (4)",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_4-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_4-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_4-input-llmMemoryType-options",
+            "display": false
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_4-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_4-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_4-input-llmUserMessage-string",
+            "display": false
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_4-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>Follow the system prompt below only if you are instructed to format a training program from a training program in json. format directly in chat, Never in a code block!</p><p>---</p><p><strong>System Prompt: Format Workout Program JSON as Table</strong></p><p>&gt; You are a table-formatting assistant.</p><p>&gt;</p><p>&gt; Your task is to convert a weekly workout program (provided as a JSON object) into a clear, in chat table.</p><p>&gt;</p><p>&gt; * Each column represents one day of the week (Monday to Sunday, in that order).</p><p>&gt; * Each row represents an exercise slot (Exercise #1, #2, etc.), with a maximum number of rows equal to the most exercises on any day.</p><p>&gt; * For non-training days, write “Rest” in the first row and leave the other rows blank.</p><p>&gt; * For training days, each cell contains, in this order:</p><p>&gt;</p><p>&gt;   * Exercise Name</p><p>&gt;   * Rep range (e.g. “8–10 reps”)</p><p>&gt;   <em> Primary muscle (italicized, e.g. </em>Quadriceps*)</p><p>&gt;   * Each item on its own line (use <code>&lt;br&gt;</code> for line breaks in markdown).</p><p>&gt; * Keep formatting consistent, clean, and easily readable.</p><p>&gt; * Do not add extra commentary, explanation, or styling—just the table.</p><p>---</p><p><strong>Example Output (markdown as example):</strong></p><p>```</p><p>| <strong>Exercise #</strong> | <strong>Monday</strong>                               | <strong>Tuesday</strong>        | <strong>Wednesday</strong>        | <strong>Thursday</strong>         | <strong>Friday</strong>           | <strong>Saturday</strong> | <strong>Sunday</strong> |</p><p>|:--------------:|:----------------------------------------:|:------------------:|:--------------------:|:--------------------:|:--------------------:|:------------:|:----------:|</p><p>| <strong>1</strong>          | Barbell Squats&lt;br&gt;8–10 reps&lt;br&gt;*Quads*   | Rest               | ...                  | ...                  | ...                  | Rest         | Rest       |</p><p>| <strong>2</strong>          | Leg Press&lt;br&gt;10–12 reps&lt;br&gt;*Quads*       |                    |                      |                      |                      |              |            |</p><p>| ...            | ...                                      | ...                | ...                  | ...                  | ...                  | ...          | ...        |</p><p>```</p><p></p>"
+            },
+            {
+              "role": "user",
+              "content": "<p>Generated Workout program:<br><br><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.workout_program_formatted\" data-label=\"$flow.state.workout_program_formatted\">{{ $flow.state.workout_program_formatted }}</span> </p>"
+            }
+          ],
+          "llmEnableMemory": false,
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [],
+          "llmUpdateState": [],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4.1-nano",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "reasoningEffort": "medium",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_4-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 256,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 325.6377750238883,
+        "y": 353.99691686389633
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "startAgentflow_0",
+      "sourceHandle": "startAgentflow_0-output-startAgentflow",
+      "target": "llmAgentflow_0",
+      "targetHandle": "llmAgentflow_0",
+      "data": {
+        "sourceColor": "#7EE787",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "startAgentflow_0-startAgentflow_0-output-startAgentflow-llmAgentflow_0-llmAgentflow_0"
+    },
+    {
+      "source": "llmAgentflow_0",
+      "sourceHandle": "llmAgentflow_0-output-llmAgentflow",
+      "target": "llmAgentflow_1",
+      "targetHandle": "llmAgentflow_1",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_0-llmAgentflow_0-output-llmAgentflow-llmAgentflow_1-llmAgentflow_1"
+    },
+    {
+      "source": "llmAgentflow_1",
+      "sourceHandle": "llmAgentflow_1-output-llmAgentflow",
+      "target": "llmAgentflow_2",
+      "targetHandle": "llmAgentflow_2",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_1-llmAgentflow_1-output-llmAgentflow-llmAgentflow_2-llmAgentflow_2"
+    },
+    {
+      "source": "llmAgentflow_2",
+      "sourceHandle": "llmAgentflow_2-output-llmAgentflow",
+      "target": "llmAgentflow_3",
+      "targetHandle": "llmAgentflow_3",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_2-llmAgentflow_2-output-llmAgentflow-llmAgentflow_3-llmAgentflow_3"
+    },
+    {
+      "source": "llmAgentflow_3",
+      "sourceHandle": "llmAgentflow_3-output-llmAgentflow",
+      "target": "llmAgentflow_4",
+      "targetHandle": "llmAgentflow_4",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_3-llmAgentflow_3-output-llmAgentflow-llmAgentflow_4-llmAgentflow_4"
+    }
+  ]
+}

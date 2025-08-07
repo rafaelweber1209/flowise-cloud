@@ -1,0 +1,1956 @@
+{
+  "nodes": [
+    {
+      "id": "startAgentflow_0",
+      "type": "agentFlow",
+      "position": {
+        "x": 97.48696335794097,
+        "y": 100
+      },
+      "data": {
+        "id": "startAgentflow_0",
+        "label": "Start",
+        "version": 1.1,
+        "name": "startAgentflow",
+        "type": "Start",
+        "color": "#7EE787",
+        "hideInput": true,
+        "baseClasses": [
+          "Start"
+        ],
+        "category": "Agent Flows",
+        "description": "Starting point of the agentflow",
+        "inputParams": [
+          {
+            "label": "Input Type",
+            "name": "startInputType",
+            "type": "options",
+            "options": [
+              {
+                "label": "Chat Input",
+                "name": "chatInput",
+                "description": "Start the conversation with chat input"
+              },
+              {
+                "label": "Form Input",
+                "name": "formInput",
+                "description": "Start the workflow with form inputs"
+              }
+            ],
+            "default": "chatInput",
+            "id": "startAgentflow_0-input-startInputType-options",
+            "display": true
+          },
+          {
+            "label": "Form Title",
+            "name": "formTitle",
+            "type": "string",
+            "placeholder": "Please Fill Out The Form",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formTitle-string",
+            "display": true
+          },
+          {
+            "label": "Form Description",
+            "name": "formDescription",
+            "type": "string",
+            "placeholder": "Complete all fields below to continue",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formDescription-string",
+            "display": true
+          },
+          {
+            "label": "Form Input Types",
+            "name": "formInputTypes",
+            "description": "Specify the type of form input",
+            "type": "array",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Options",
+                    "name": "options"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "string",
+                "placeholder": "Label for the input"
+              },
+              {
+                "label": "Variable Name",
+                "name": "name",
+                "type": "string",
+                "placeholder": "Variable name for the input (must be camel case)",
+                "description": "Variable name must be camel case. For example: firstName, lastName, etc."
+              },
+              {
+                "label": "Add Options",
+                "name": "addOptions",
+                "type": "array",
+                "show": {
+                  "formInputTypes[$index].type": "options"
+                },
+                "array": [
+                  {
+                    "label": "Option",
+                    "name": "option",
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "id": "startAgentflow_0-input-formInputTypes-array",
+            "display": true
+          },
+          {
+            "label": "Ephemeral Memory",
+            "name": "startEphemeralMemory",
+            "type": "boolean",
+            "description": "Start fresh for every execution without past chat history",
+            "optional": true,
+            "id": "startAgentflow_0-input-startEphemeralMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Flow State",
+            "name": "startState",
+            "description": "Runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "placeholder": "Foo"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "placeholder": "Bar",
+                "optional": true
+              }
+            ],
+            "id": "startAgentflow_0-input-startState-array",
+            "display": true
+          },
+          {
+            "label": "Persist State",
+            "name": "startPersistState",
+            "type": "boolean",
+            "description": "Persist the state in the same session",
+            "optional": true,
+            "id": "startAgentflow_0-input-startPersistState-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "startInputType": "formInput",
+          "formTitle": "",
+          "formDescription": "",
+          "formInputTypes": [
+            {
+              "type": "string",
+              "label": "Voor welke dagen wil je een menu? (bv. ma,di,wo)",
+              "name": "dagen",
+              "addOptions": ""
+            },
+            {
+              "type": "number",
+              "label": "Aantal personen",
+              "name": "personen",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "Kooktijd per dag? (Snel, Normaal, Uitgebreid)",
+              "name": "kooktijd",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "Wat is je kcal-doel per maaltijd? (standaard 600)",
+              "name": "kcal_doel",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "Wat is je eiwit-doel per maaltijd? (standaard 40)",
+              "name": "eiwit_doel",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "Specifieke vega-dagen? (bv. wo,do)",
+              "name": "vega_dagen",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "Allergieën of ingrediënten die je niet lust?",
+              "name": "allergieen",
+              "addOptions": ""
+            },
+            {
+              "type": "string",
+              "label": "Plak hier al je AH Bonusdeals waar je rekening mee wilt houden (één per regel).",
+              "name": "deals",
+              "addOptions": ""
+            }
+          ],
+          "startEphemeralMemory": true,
+          "startState": [
+            {
+              "key": "user_input",
+              "value": ""
+            },
+            {
+              "key": "deals_structured",
+              "value": ""
+            },
+            {
+              "key": "dagen_array",
+              "value": ""
+            },
+            {
+              "key": "menu_options",
+              "value": ""
+            },
+            {
+              "key": "final_menu",
+              "value": ""
+            },
+            {
+              "key": "boodschappenlijst",
+              "value": ""
+            },
+            {
+              "key": "master_idea_list",
+              "value": ""
+            }
+          ],
+          "startPersistState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "startAgentflow_0-output-startAgentflow",
+            "label": "Start",
+            "name": "startAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 103,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 97.48696335794097,
+        "y": 100
+      }
+    },
+    {
+      "id": "customFunctionAgentflow_0",
+      "position": {
+        "x": 324.19496855085816,
+        "y": 97.97877358685639
+      },
+      "data": {
+        "id": "customFunctionAgentflow_0",
+        "label": "Custom Function 0",
+        "version": 1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Schema as variables. Ex: Property = userid, Variable = $userid\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get custom variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_0-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": [
+            {
+              "variableName": "dagen_str",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.dagen\" data-label=\"$form.dagen\">{{ $form.dagen }}</span> </p>"
+            },
+            {
+              "variableName": "personen_num",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.personen\" data-label=\"$form.personen\">{{ $form.personen }}</span> </p>"
+            },
+            {
+              "variableName": "kooktijd_str",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.kooktijd\" data-label=\"$form.kooktijd\">{{ $form.kooktijd }}</span> </p>"
+            },
+            {
+              "variableName": "kcal_num",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.kcal_doel\" data-label=\"$form.kcal_doel\">{{ $form.kcal_doel }}</span> </p>"
+            },
+            {
+              "variableName": "eiwit_num",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.eiwit_doel\" data-label=\"$form.eiwit_doel\">{{ $form.eiwit_doel }}</span> </p>"
+            },
+            {
+              "variableName": "vega_str",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.vega_dagen\" data-label=\"$form.vega_dagen\">{{ $form.vega_dagen }}</span> </p>"
+            },
+            {
+              "variableName": "allergieen_str",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.allergieen\" data-label=\"$form.allergieen\">{{ $form.allergieen }}</span> </p>"
+            },
+            {
+              "variableName": "deals_str",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.deals\" data-label=\"$form.deals\">{{ $form.deals }}</span> </p>"
+            }
+          ],
+          "customFunctionJavascriptFunction": "// Stap A: Pak een referentie naar het gedeelde geheugen van de flow.\n// Zie $flow.state als het boodschappenbriefje dat we de hele flow door kunnen aanpassen.\nconst state = $flow.state;\n\n// Stap B: Sla de ruwe, onbewerkte input van de gebruiker op. Altijd handig voor later.\nstate.user_input = {\n  dagen: $dagen_str,\n  personen: $personen_num,\n  kooktijd: $kooktijd_str,\n  kcal_doel: $kcal_num,\n  eiwit_doel: $eiwit_num,\n  vega_dagen: $vega_str,\n  allergieen: $allergieen_str,\n  deals: $deals_str\n};\n\n// Stap C: Verwerk de 'dagen'-tekst naar een nette lijst (array).\n// .split(',') hakt de tekst in stukjes op elke komma.\n// .map(dag => dag.trim()) haalt eventuele spaties weg voor/na elk woord.\n// Input: \" ma ,di, wo \" -> Output: [\"ma\", \"di\", \"wo\"]\nstate.dagen_array = $dagen_str.split(',').map(dag => dag.trim());\n\n// Stap D: Verwerk de 'deals'-tekst naar een lijst.\n// .split('\\n') hakt de tekst op elke nieuwe regel.\n// .filter(deal => ...) zorgt ervoor dat we lege regels negeren.\nstate.deals_structured = $deals_str.split('\\n').filter(deal => deal.trim() !== '');\n\n// Stap E: Geef een seintje dat we klaar zijn.\n// We moeten iets retourneren. Het is een goede gewoonte om de bijgewerkte state\n// als een JSON-string terug te geven.\nreturn JSON.stringify(state, null, 2);",
+          "customFunctionUpdateState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_0-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 195,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 324.19496855085816,
+        "y": 97.97877358685639
+      },
+      "dragging": false
+    },
+    {
+      "id": "customFunctionAgentflow_1",
+      "position": {
+        "x": 631.5267646776394,
+        "y": 88.35746785867582
+      },
+      "data": {
+        "id": "customFunctionAgentflow_1",
+        "label": "Taak bepaler",
+        "version": 1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_1-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Schema as variables. Ex: Property = userid, Variable = $userid\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get custom variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_1-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_1-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": "",
+          "customFunctionJavascriptFunction": "// --- Taak Bepaler Logica ---\n\nconst state = $flow.state;\n\n// Extra vangnet: zorg dat onze variabelen zeker weten bestaan en het juiste type hebben.\nif (!Array.isArray(state.dagen_array)) state.dagen_array = [];\nif (typeof state.menu_options !== 'object' || state.menu_options === null) state.menu_options = {};\n\nconst alleGevraagdeDagen = state.dagen_array;\n\n// Standaard is de taak \"klaar\", tenzij we een onvoltooide taak vinden.\nlet volgendeTaak = { \"taak\": \"klaar\" };\n\n// Loop door de dagen die de gebruiker wilde (bv. [\"ma\", \"di\", \"wo\"])\nfor (const dag of alleGevraagdeDagen) {\n\n  // Tel hoeveel recept-opties we al hebben verzameld voor deze specifieke dag.\n  const optiesVoorDezeDag = state.menu_options[dag] || [];\n  const aantalOpties = optiesVoorDezeDag.length;\n\n  // Als we al 3 (of meer) opties hebben voor deze dag, is hij klaar.\n  // We gaan door naar de volgende dag in de lijst.\n  if (aantalOpties >= 3) {\n    continue; \n  }\n\n  // Als we hier komen, betekent het dat we MINDER dan 3 opties hebben.\n  // Dit is onze volgende taak!\n  volgendeTaak = {\n    \"taak\": \"genereer_recept\",\n    \"dag\": dag\n  };\n\n  // We hebben een taak gevonden, dus we hoeven niet verder te zoeken.\n  // We stoppen de 'for'-lus.\n  break; \n}\n\n// Retourneer de beslissing van de Taak Bepaler.\nreturn JSON.stringify(volgendeTaak);",
+          "customFunctionUpdateState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_1-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 156,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 631.5267646776394,
+        "y": 88.35746785867582
+      },
+      "dragging": false
+    },
+    {
+      "id": "conditionAgentflow_0",
+      "position": {
+        "x": 893.6362053905997,
+        "y": 86.69297352737728
+      },
+      "data": {
+        "id": "conditionAgentflow_0",
+        "label": "Wissel",
+        "version": 1,
+        "name": "conditionAgentflow",
+        "type": "Condition",
+        "color": "#FFB938",
+        "baseClasses": [
+          "Condition"
+        ],
+        "category": "Agent Flows",
+        "description": "Split flows based on If Else conditions",
+        "inputParams": [
+          {
+            "label": "Conditions",
+            "name": "conditions",
+            "type": "array",
+            "description": "Values to compare",
+            "acceptVariable": true,
+            "default": [
+              {
+                "type": "string",
+                "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_1\" data-label=\"customFunctionAgentflow_1\">{{ customFunctionAgentflow_1 }}</span> </p>",
+                "operation": "contains",
+                "value2": ""
+              }
+            ],
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "string",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Contains",
+                    "name": "contains"
+                  },
+                  {
+                    "label": "Ends With",
+                    "name": "endsWith"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Contains",
+                    "name": "notContains"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Regex",
+                    "name": "regex"
+                  },
+                  {
+                    "label": "Starts With",
+                    "name": "startsWith"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "string",
+                "default": "",
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                },
+                "hide": {
+                  "conditions[$index].operation": [
+                    "isEmpty",
+                    "notEmpty"
+                  ]
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "number",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Smaller",
+                    "name": "smaller"
+                  },
+                  {
+                    "label": "Smaller Equal",
+                    "name": "smallerEqual"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Larger",
+                    "name": "larger"
+                  },
+                  {
+                    "label": "Larger Equal",
+                    "name": "largerEqual"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "number",
+                "default": 0,
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "boolean",
+                "default": false,
+                "description": "First value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "boolean",
+                "default": false,
+                "description": "Second value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              }
+            ],
+            "id": "conditionAgentflow_0-input-conditions-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "conditions": [
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_1\" data-label=\"customFunctionAgentflow_1\">{{ customFunctionAgentflow_1 }}</span> </p>",
+              "operation": "contains",
+              "value2": "<p>\"taak\":\"klaar\"</p>"
+            }
+          ]
+        },
+        "outputAnchors": [
+          {
+            "id": "conditionAgentflow_0-output-0",
+            "label": 0,
+            "name": 0,
+            "description": "Condition 0"
+          },
+          {
+            "id": "conditionAgentflow_0-output-1",
+            "label": 1,
+            "name": 1,
+            "description": "Else"
+          }
+        ],
+        "outputs": {
+          "conditionAgentflow": ""
+        },
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 115,
+      "height": 80,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 893.6362053905997,
+        "y": 86.69297352737728
+      }
+    },
+    {
+      "id": "agentAgentflow_0",
+      "position": {
+        "x": 1093.8037949649352,
+        "y": 185.85683769171567
+      },
+      "data": {
+        "id": "agentAgentflow_0",
+        "label": "Agent 0",
+        "version": 1,
+        "name": "agentAgentflow",
+        "type": "Agent",
+        "color": "#4DD0E1",
+        "baseClasses": [
+          "Agent"
+        ],
+        "category": "Agent Flows",
+        "description": "Dynamically choose and utilize tools during runtime, enabling multi-step reasoning",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "agentModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "agentAgentflow_0-input-agentModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "agentMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "agentAgentflow_0-input-agentMessages-array",
+            "display": true
+          },
+          {
+            "label": "Tools",
+            "name": "agentTools",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Tool",
+                "name": "agentSelectedTool",
+                "type": "asyncOptions",
+                "loadMethod": "listTools",
+                "loadConfig": true
+              },
+              {
+                "label": "Require Human Input",
+                "name": "agentSelectedToolRequiresHumanInput",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "id": "agentAgentflow_0-input-agentTools-array",
+            "display": true
+          },
+          {
+            "label": "Knowledge (Document Stores)",
+            "name": "agentKnowledgeDocumentStores",
+            "type": "array",
+            "description": "Give your agent context about different document sources. Document stores must be upserted in advance.",
+            "array": [
+              {
+                "label": "Document Store",
+                "name": "documentStore",
+                "type": "asyncOptions",
+                "loadMethod": "listStores"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "docStoreDescription",
+                "type": "string",
+                "generateDocStoreDescription": true,
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_0-input-agentKnowledgeDocumentStores-array",
+            "display": true
+          },
+          {
+            "label": "Knowledge (Vector Embeddings)",
+            "name": "agentKnowledgeVSEmbeddings",
+            "type": "array",
+            "description": "Give your agent context about different document sources from existing vector stores and embeddings",
+            "array": [
+              {
+                "label": "Vector Store",
+                "name": "vectorStore",
+                "type": "asyncOptions",
+                "loadMethod": "listVectorStores",
+                "loadConfig": true
+              },
+              {
+                "label": "Embedding Model",
+                "name": "embeddingModel",
+                "type": "asyncOptions",
+                "loadMethod": "listEmbeddings",
+                "loadConfig": true
+              },
+              {
+                "label": "Knowledge Name",
+                "name": "knowledgeName",
+                "type": "string",
+                "placeholder": "A short name for the knowledge base, this is useful for the AI to know when and how to search for correct information"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "knowledgeDescription",
+                "type": "string",
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_0-input-agentKnowledgeVSEmbeddings-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "agentEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "agentAgentflow_0-input-agentEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "agentMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_0-input-agentMemoryType-options",
+            "display": false
+          },
+          {
+            "label": "Window Size",
+            "name": "agentMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "agentMemoryType": "windowSize"
+            },
+            "id": "agentAgentflow_0-input-agentMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "agentMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "agentMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "agentAgentflow_0-input-agentMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "agentUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_0-input-agentUserMessage-string",
+            "display": false
+          },
+          {
+            "label": "Return Response As",
+            "name": "agentReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "agentAgentflow_0-input-agentReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "agentUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "agentAgentflow_0-input-agentUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "agentModel": "chatOpenAI",
+          "agentMessages": [
+            {
+              "role": "system",
+              "content": "<p># ROL Je bent een expert \"Recept Chef\" Agent. ## JOUW DOEL EN SPELREGELS Je doel is om voor een specifieke dag één compleet receptvoorstel te vinden, door te rekenen en te valideren. Je MOET je houden aan de volgende spelregels: 1. <strong>Taak:</strong> Je input is een JSON-object dat de taak en de dag aangeeft, bv: <code>{\"taak\":\"genereer_recept\",\"dag\":\"ma\"}</code>. 2. <strong>Wensen:</strong> Alle wensen van de gebruiker (kooktijd, deals, allergieën, etc.) haal je uit de <code>$flow.state.user_input</code>. 3. <strong>Macro's:</strong> Het eindresultaat moet voldoen aan de doelen in <code>{{$flow.state.user_input.kcal_num}}</code> kcal en <code>{{$flow.state.user_input.eiwit_num}}</code> gram eiwit. Pas portiegroottes aan om dit te bereiken. 4. <strong>Bronvoorkeur:</strong> Geef een sterke voorkeur aan recepten van <strong>Allerhande (ah.nl)</strong> of <strong>Pien laat haar eten zien</strong>. Gebruik andere betrouwbare bronnen alleen als het echt niet anders kan. 5. <strong>Uniciteit:</strong> Zorg ervoor dat de recepten die je voor een dag genereert significant van elkaar verschillen. Controleer de reeds gevonden recepten in <code>$flow.state.menu_options</code>. ## JOUW GEREEDSCHAP (TOOLS) - *<code>tavily_search</code>:** Gebruik deze tool voor al je onderzoek: het vinden van recept-ideeën en het opzoeken van specifieke voedingswaarden. - *<code>calculator</code>:** Gebruik deze tool alleen als je complexe berekeningen moet doen. Simpel optellen kun je zelf. ## HET EINDPUNT: JE ANTWOORD Je antwoordt ALTIJD met een enkel JSON-object in een markdown code-blok. Geen extra tekst. - Bij succes, gebruik dit formaat: ```json { \"status\": \"succes\", \"dag\": \"ma\", \"titel\": \"Gevonden en gevalideerde titel\", \"bron\": \"Naam van de website\", \"rekenbewijs\": \"150g kipfilet (165 kcal, 35g E) + ...\", \"totaal_kcal\": 605, \"totaal_eiwit\": 41 } ``` - Als je na meerdere, gevarieerde pogingen geen passend recept vindt, antwoord dan met: ```json { \"status\": \"mislukt\" } ```</p>"
+            },
+            {
+              "role": "user",
+              "content": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_1\" data-label=\"customFunctionAgentflow_1\">{{ customFunctionAgentflow_1 }}</span></p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.user_input\" data-label=\"$flow.state.user_input\">{{ $flow.state.user_input }}</span></p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.final_menu\" data-label=\"$flow.state.final_menu\">{{ $flow.state.final_menu }}</span> </p>"
+            }
+          ],
+          "agentTools": [
+            {
+              "agentSelectedTool": "calculator",
+              "agentSelectedToolRequiresHumanInput": "",
+              "agentSelectedToolConfig": {
+                "agentSelectedTool": "calculator"
+              }
+            },
+            {
+              "agentSelectedTool": "tavilyAPI",
+              "agentSelectedToolRequiresHumanInput": "",
+              "agentSelectedToolConfig": {
+                "topic": "general",
+                "searchDepth": "basic",
+                "chunksPerSource": 3,
+                "maxResults": 5,
+                "timeRange": "",
+                "days": 7,
+                "includeAnswer": true,
+                "includeRawContent": false,
+                "includeImages": "",
+                "includeImageDescriptions": "",
+                "includeDomains": "",
+                "excludeDomains": "",
+                "agentSelectedTool": "tavilyAPI"
+              }
+            }
+          ],
+          "agentKnowledgeDocumentStores": "",
+          "agentKnowledgeVSEmbeddings": "",
+          "agentEnableMemory": false,
+          "agentReturnResponseAs": "userMessage",
+          "agentUpdateState": "",
+          "agentModelConfig": {
+            "credential": "",
+            "modelName": "o4-mini",
+            "temperature": "1",
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "reasoningEffort": "medium",
+            "agentModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "agentAgentflow_0-output-agentAgentflow",
+            "label": "Agent",
+            "name": "agentAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 153,
+      "height": 100,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1093.8037949649352,
+        "y": 185.85683769171567
+      },
+      "dragging": false
+    },
+    {
+      "id": "customFunctionAgentflow_2",
+      "position": {
+        "x": 1365.61099548091,
+        "y": 179.09752016877027
+      },
+      "data": {
+        "id": "customFunctionAgentflow_2",
+        "label": "Custom Function 2",
+        "version": 1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_2-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Schema as variables. Ex: Property = userid, Variable = $userid\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get custom variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_2-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_2-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": [
+            {
+              "variableName": "agent_output",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"agentAgentflow_0\" data-label=\"agentAgentflow_0\">{{ agentAgentflow_0 }}</span> </p>"
+            }
+          ],
+          "customFunctionJavascriptFunction": "// --- Resultaat Verwerker Logica ---\n\nconst state = $flow.state;\n\ntry {\n  // De agent-output is een tekst met een JSON-blok, dus we gebruiken\n  // dezelfde 'schoonmaak'-techniek als voorheen.\n  const match = $agent_output.match(/```json\\n([\\s\\S]*?)\\n```/);\n  const agentData = JSON.parse(match[1]);\n\n  // Controleer of de agent succes had.\n  if (agentData.status === 'succes') {\n    const dag = agentData.dag;\n\n    // Als er voor deze dag nog geen lijst is in de menukaart, maak die dan aan.\n    if (!state.menu_options[dag]) {\n      state.menu_options[dag] = [];\n    }\n\n    // Voeg het succesvolle recept toe aan de menukaart voor de juiste dag.\n    state.menu_options[dag].push(agentData);\n  }\n\n  // We hoeven hier niets specifieks te retourneren, de state is bijgewerkt.\n  return \"Resultaat verwerkt.\";\n\n} catch (e) {\n  // Als er iets misgaat met het lezen van de agent-output, loggen we dat.\n  return \"Fout bij verwerken van agent-output.\";\n}",
+          "customFunctionUpdateState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_2-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 194,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1365.61099548091,
+        "y": 179.09752016877027
+      }
+    },
+    {
+      "id": "loopAgentflow_0",
+      "position": {
+        "x": 1650.4679482336094,
+        "y": 187.78807126970014
+      },
+      "data": {
+        "id": "loopAgentflow_0",
+        "label": "Loop 0",
+        "version": 1,
+        "name": "loopAgentflow",
+        "type": "Loop",
+        "color": "#FFA07A",
+        "hideOutput": true,
+        "baseClasses": [
+          "Loop"
+        ],
+        "category": "Agent Flows",
+        "description": "Loop back to a previous node",
+        "inputParams": [
+          {
+            "label": "Loop Back To",
+            "name": "loopBackToNode",
+            "type": "asyncOptions",
+            "loadMethod": "listPreviousNodes",
+            "freeSolo": true,
+            "id": "loopAgentflow_0-input-loopBackToNode-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Max Loop Count",
+            "name": "maxLoopCount",
+            "type": "number",
+            "default": 5,
+            "id": "loopAgentflow_0-input-maxLoopCount-number",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "loopBackToNode": "customFunctionAgentflow_1-Taak bepaler",
+          "maxLoopCount": "15"
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 117,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1650.4679482336094,
+        "y": 187.78807126970014
+      },
+      "dragging": false
+    },
+    {
+      "id": "customFunctionAgentflow_3",
+      "position": {
+        "x": 1123.0716008443978,
+        "y": -52.3909602848013
+      },
+      "data": {
+        "id": "customFunctionAgentflow_3",
+        "label": "Custom Function 3",
+        "version": 1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_3-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Schema as variables. Ex: Property = userid, Variable = $userid\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get custom variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_3-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_3-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": "",
+          "customFunctionJavascriptFunction": "// Pak de uiteindelijke menukaart uit de state.\nconst menu = $flow.state.menu_options;\n\n// Zet het complete menu-object om in een netjes opgemaakte string.\nconst formattedString = JSON.stringify(menu, null, 2);\n\n// Retourneer deze string.\nreturn formattedString;",
+          "customFunctionUpdateState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_3-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 194,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1123.0716008443978,
+        "y": -52.3909602848013
+      }
+    },
+    {
+      "id": "directReplyAgentflow_0",
+      "position": {
+        "x": 1725.6047264214853,
+        "y": -102.7185531404281
+      },
+      "data": {
+        "id": "directReplyAgentflow_0",
+        "label": "Direct Reply 0",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_0-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "<p>✅ Weekmenu V3.0 is klaar! Hier zijn de gevonden en gevalideerde opties: <span class=\"variable\" data-type=\"mention\" data-id=\"llmAgentflow_0\" data-label=\"llmAgentflow_0\">{{ llmAgentflow_0 }}</span> </p>",
+          "undefined": ""
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 163,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1725.6047264214853,
+        "y": -102.7185531404281
+      }
+    },
+    {
+      "id": "llmAgentflow_0",
+      "position": {
+        "x": 1405.4653163120813,
+        "y": -69.16682457001023
+      },
+      "data": {
+        "id": "llmAgentflow_0",
+        "label": "Presentator LLM",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_0-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_0-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmMemoryType-options",
+            "display": false
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmUserMessage-string",
+            "display": false
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_0-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>Je bent een enthousiaste en overzichtelijke keukenassistent. Je taak is om de gegeven JSON-data om te zetten in een prachtig, helder en leesbaar weekmenu voor de gebruiker. Gebruik Markdown voor de opmaak.</p>"
+            },
+            {
+              "role": "user",
+              "content": "<p>Hier is de data voor het weekmenu in JSON-formaat: <span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_3\" data-label=\"customFunctionAgentflow_3\">{{ customFunctionAgentflow_3 }}</span></p><p></p><p>Jouw taak is om deze data om te zetten in een helder en overzichtelijk keuzemenu voor de gebruiker.</p><p>Volg deze regels strikt:</p><ol><li><p><strong>VOLLEDIGHEID:</strong> Zorg ervoor dat <strong>ALLE</strong> informatie uit het JSON-object voor elk recept wordt getoond. Laat geen velden weg, ook het \"rekenbewijs\" niet.</p></li><li><p><strong>STRUCTUUR:</strong> Groepeer de recepten per dag. Presenteer de recepten als genummerde 'Opties' (Optie 1, Optie 2, etc.).</p></li><li><p><strong>OPMAAK:</strong> Gebruik Markdown (kopteksten, lijsten, vetgedrukte tekst) om de leesbaarheid te maximaliseren.</p></li><li><p><strong>GEEN VERZINSELS:</strong> Verzin <strong>geen</strong> extra categorieën zoals 'Ontbijt', 'Lunch' of 'Diner'. De recepten zijn simpelweg genummerde keuzes voor de maaltijd van die dag.</p></li></ol>"
+            }
+          ],
+          "llmEnableMemory": false,
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": "",
+          "llmUpdateState": "",
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4.1-nano",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "reasoningEffort": "medium",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_0-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 179,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1405.4653163120813,
+        "y": -69.16682457001023
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "startAgentflow_0",
+      "sourceHandle": "startAgentflow_0-output-startAgentflow",
+      "target": "customFunctionAgentflow_0",
+      "targetHandle": "customFunctionAgentflow_0",
+      "data": {
+        "sourceColor": "#7EE787",
+        "targetColor": "#E4B7FF",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "startAgentflow_0-startAgentflow_0-output-startAgentflow-customFunctionAgentflow_0-customFunctionAgentflow_0"
+    },
+    {
+      "source": "customFunctionAgentflow_0",
+      "sourceHandle": "customFunctionAgentflow_0-output-customFunctionAgentflow",
+      "target": "customFunctionAgentflow_1",
+      "targetHandle": "customFunctionAgentflow_1",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#E4B7FF",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_0-customFunctionAgentflow_0-output-customFunctionAgentflow-customFunctionAgentflow_1-customFunctionAgentflow_1"
+    },
+    {
+      "source": "customFunctionAgentflow_1",
+      "sourceHandle": "customFunctionAgentflow_1-output-customFunctionAgentflow",
+      "target": "conditionAgentflow_0",
+      "targetHandle": "conditionAgentflow_0",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#FFB938",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_1-customFunctionAgentflow_1-output-customFunctionAgentflow-conditionAgentflow_0-conditionAgentflow_0"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-1",
+      "target": "agentAgentflow_0",
+      "targetHandle": "agentAgentflow_0",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#4DD0E1",
+        "edgeLabel": "1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-1-agentAgentflow_0-agentAgentflow_0"
+    },
+    {
+      "source": "agentAgentflow_0",
+      "sourceHandle": "agentAgentflow_0-output-agentAgentflow",
+      "target": "customFunctionAgentflow_2",
+      "targetHandle": "customFunctionAgentflow_2",
+      "data": {
+        "sourceColor": "#4DD0E1",
+        "targetColor": "#E4B7FF",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "agentAgentflow_0-agentAgentflow_0-output-agentAgentflow-customFunctionAgentflow_2-customFunctionAgentflow_2"
+    },
+    {
+      "source": "customFunctionAgentflow_2",
+      "sourceHandle": "customFunctionAgentflow_2-output-customFunctionAgentflow",
+      "target": "loopAgentflow_0",
+      "targetHandle": "loopAgentflow_0",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#FFA07A",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_2-customFunctionAgentflow_2-output-customFunctionAgentflow-loopAgentflow_0-loopAgentflow_0"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-0",
+      "target": "customFunctionAgentflow_3",
+      "targetHandle": "customFunctionAgentflow_3",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#E4B7FF",
+        "edgeLabel": "0",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-0-customFunctionAgentflow_3-customFunctionAgentflow_3"
+    },
+    {
+      "source": "customFunctionAgentflow_3",
+      "sourceHandle": "customFunctionAgentflow_3-output-customFunctionAgentflow",
+      "target": "llmAgentflow_0",
+      "targetHandle": "llmAgentflow_0",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_3-customFunctionAgentflow_3-output-customFunctionAgentflow-llmAgentflow_0-llmAgentflow_0"
+    },
+    {
+      "source": "llmAgentflow_0",
+      "sourceHandle": "llmAgentflow_0-output-llmAgentflow",
+      "target": "directReplyAgentflow_0",
+      "targetHandle": "directReplyAgentflow_0",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#4DDBBB",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_0-llmAgentflow_0-output-llmAgentflow-directReplyAgentflow_0-directReplyAgentflow_0"
+    }
+  ]
+}

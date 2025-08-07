@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "The detailed text prompt to generate the image from."
+      },
+      "projectId": {
+        "type": "string",
+        "description": "Your Google Cloud Project ID."
+      },
+      "location": {
+        "type": "string",
+        "description": "The Google Cloud location, e.g., 'us-central1'."
+      },
+      "googleApplicationCredentials": {
+        "type": "string",
+        "description": "The content of your Google Service Account JSON key file as a string."
+      }
+    },
+    "required": [
+      "prompt",
+      "projectId",
+      "location",
+      "googleApplicationCredentials"
+    ]
+  }
